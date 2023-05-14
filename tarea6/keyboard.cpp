@@ -7,77 +7,55 @@ que contiene la operacion size la cual tiene complejidad lineal lo que hace que 
 using namespace std;
 
 
-vector<char> realCadena(string s){
-	
-	vector<char> palabra;
-	vector<char> palabra1;
-	vector<char> ans;
+vector<char> realCadena(string s) {
+    vector<char> palabra;
+    vector<char> palabra1;
+    vector<char> ans;
+    int cad = 2;
 
-	
-	int i,j,k,cad = 2;
-	
-	for(i= 0; i< s.size(); i++){
-		
-		if(s[i] == '['){
-			cad = 1;
-		}
-		
-		else if(s[i] == ']'){
-			cad = 2;
-		}
-		
-		if(cad == 2){
-			if((s[i] == '[')or (s[i]== ']')){
-			
-				palabra1.push_back(' ');	
-			}
-			else{
-			palabra1.push_back(s[i]);
-			printf("%s", s[i]);	
-			}
-			
-			
-			
-		}
-		if(cad == 1){
-			
-			if((s[i] == '[')or (s[i]== ']')){
-			
-				palabra.push_back(' ');	
-			}
-			
-			else{
-			palabra.push_back( s[i]);	
-			}
-		}
-	}
-	for(j = 0; j < palabra1.size(); j++){
-		
-		ans.push_back(palabra1[j]);
-	}
-	
-	for(k = 0; k < palabra.size(); k++){
-		
-		ans.push_back(palabra[k]);
-	}
-	
-	return ans;
-		
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == '[') {
+            cad = 1;
+        } else if (s[i] == ']') {
+            cad = 2;
+        }
+
+        if (cad == 2) {
+            if (s[i] != '[' && s[i] != ']') {
+                palabra1.push_back(s[i]);
+                
+            }
+        }
+
+        if (cad == 1) {
+            if (s[i] != '[' && s[i] != ']') {
+                palabra.push_back(s[i]);
+            }
+        }
+    }
+
+    for (int j = 0; j < palabra.size(); j++) {
+        ans.push_back(palabra[j]);
+    }
+
+    for (int k = 0; k < palabra1.size(); k++) {
+        ans.push_back(palabra1[k]);
+    }
+
+    return ans;
 }
 
-int main(){
-	int i;
-	string cadena;
+int main() {
+    string cadena;
+    cin >> cadena;
 
-	cin >>cadena;
-	
-	
-	vector<char> ans = realCadena(cadena);
-	
-	for(i = 0; i < ans.size(); i++){
-		cout << ans[i] << endl;
-	}
-return 0;	
+    vector<char> ans = realCadena(cadena);
+
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i];
+    }
+
+    return 0;
 }
   
 
